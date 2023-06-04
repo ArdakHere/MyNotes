@@ -1,12 +1,14 @@
 package com.example.mynotes
 
+import android.os.Parcel
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class NoteAdapter(private var notes : List<Note>) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
+class NoteAdapter(private var notes : MutableList<Note>) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         private val contentTextView: TextView = itemView.findViewById(R.id.contentTextView)
@@ -40,4 +42,7 @@ class NoteAdapter(private var notes : List<Note>) : RecyclerView.Adapter<NoteAda
     override fun getItemCount(): Int {
         return notes.size
     }
+
+
+
 }

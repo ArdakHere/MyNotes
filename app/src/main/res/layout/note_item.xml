@@ -13,8 +13,7 @@
         android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:text="TextView"
+        android:text="Title"
         android:textSize="40sp"
         tools:layout_editor_absoluteX="143dp"
         tools:layout_editor_absoluteY="31dp" />
@@ -30,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="70dp"
         android:textSize="25sp"
-        android:text="TextView"
+        android:text="\t"
         tools:layout_editor_absoluteX="139dp"
         tools:layout_editor_absoluteY="106dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
