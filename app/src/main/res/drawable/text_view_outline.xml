@@ -1,0 +1,8 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#00000000" /> <!-- Set the color of the TextView's background to transparent -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/black"/> <!-- Set the desired width of the outline -->
+       <!-- Set the desired color of the outline -->
+    <corners android:radius="8dp" /> <!-- Set the desired corner radius of the outline -->
+</shape>
