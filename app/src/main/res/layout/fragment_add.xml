@@ -2,7 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="fragment_add">
 
     <EditText
         android:id="@+id/note_text"
@@ -10,15 +12,21 @@
         android:layout_height="500dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:hint="Note text"
-
+        android:layout_marginTop="27dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:hint="@string/note_text"
+        android:background="#1B99C0"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/white"
         />
 
     <Button
+        android:id="@+id/ADD"
         android:layout_width="300dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="50dp"
         android:layout_height="60dp"
         app:layout_constraintTop_toBottomOf="@id/note_text"
         app:layout_constraintStart_toStartOf="parent"

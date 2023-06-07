@@ -13,13 +13,6 @@ class NoteAdapter(private var notes : MutableList<Note>) : RecyclerView.Adapter<
         private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         private val contentTextView: TextView = itemView.findViewById(R.id.contentTextView)
 
-        init {
-            itemView.setOnClickListener {
-                val note = notes[adapterPosition]
-                // Handle note click event
-                // Open a window or perform any desired action
-            }
-        }
 
 
     }
