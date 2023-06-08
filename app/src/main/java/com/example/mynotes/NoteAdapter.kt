@@ -12,9 +12,18 @@ class NoteAdapter(private var notes : MutableList<Note>) : RecyclerView.Adapter<
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         private val contentTextView: TextView = itemView.findViewById(R.id.contentTextView)
+        init {
+            itemView.setOnClickListener {
+                val note = notes[absoluteAdapterPosition]
+                // Handle note click event
+                // Open a window or perform any desired action
+            }
+        }
 
-
-
+        fun bind(note: Note) {
+            titleTextView.text = note.title
+            contentTextView.text = note.content
+        }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.note_item, parent, false)

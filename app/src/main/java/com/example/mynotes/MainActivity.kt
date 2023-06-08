@@ -1,14 +1,15 @@
 package com.example.mynotes
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -47,11 +48,16 @@ class MainActivity : AppCompatActivity() {
                 replace(R.id.add_fragment, addFragment)
                 addFragment.setSharedDataList(noteList, adapter)
                 addToBackStack(null)
+                addNoteButton.visibility = View.GONE
                 commit()
-
 
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        findViewById<FloatingActionButton>(R.id.add_note_button).visibility = View.VISIBLE
 
     }
     private fun openNoteFragment() {
