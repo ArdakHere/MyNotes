@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 
 class NoteAdapter(private var notes : MutableList<Note>) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
@@ -17,6 +18,29 @@ class NoteAdapter(private var notes : MutableList<Note>) : RecyclerView.Adapter<
                 val note = notes[absoluteAdapterPosition]
                 // Handle note click event
                 // Open a window or perform any desired action
+            }
+            itemView.setOnLongClickListener {
+                val position = absoluteAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val taskToDelete = notes[position]
+
+                    // Display a dialog or confirmation prompt for deletion
+                    val builder = AlertDialog.Builder(itemView.context)
+                    builder.setTitle("Delete note")
+                    builder.setMessage("Are you sure you want to delete this note?")
+
+                    builder.setPositiveButton("Delete") { dialog, which ->
+                        // Delete the task from your task list
+                        notes.removeAt(position)
+                        notifyItemChanged(position)
+                    }
+
+                    builder.setNegativeButton("Cancel", null)
+
+                    val dialog: AlertDialog = builder.create()
+                    dialog.show()
+                }
+                true
             }
         }
 

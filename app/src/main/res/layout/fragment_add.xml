@@ -17,10 +17,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/note_text"
         android:hint="@string/enter_title"
-        android:background="#1B99C0"
+        android:background="#FFFFCC"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:backgroundTint="@color/white"
         />
 
     <EditText
@@ -33,12 +32,9 @@
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:hint="@string/note_text"
-        android:background="#1B99C0"
+        android:background="#FFFFCC"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:backgroundTint="@color/white"
-
-
         />
 
     <Button
@@ -48,8 +44,10 @@
         android:layout_marginBottom="50dp"
         android:layout_height="60dp"
         app:layout_constraintTop_toBottomOf="@id/note_text"
+        android:backgroundTint="#D4B4B4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black"
         android:text="ADD"
         />
 

@@ -39,14 +39,13 @@ class MainActivity : AppCompatActivity() {
 
         myRecyclerView.adapter = adapter
         myRecyclerView.layoutManager = LinearLayoutManager(this)
-        noteList.add(Note("frefre", "efrfe"))
 
         val addFragment = fragment_add()
 
         addNoteButton.setOnClickListener {
             supportFragmentManager.beginTransaction().apply {
-                replace(R.id.add_fragment, addFragment)
                 addFragment.setSharedDataList(noteList, adapter)
+                replace(R.id.add_fragment, addFragment)
                 addToBackStack(null)
                 addNoteButton.visibility = View.GONE
                 commit()

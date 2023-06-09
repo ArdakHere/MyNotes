@@ -31,15 +31,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
          val titleText = view.findViewById<EditText>(R.id.title_text).text
          val addButton: Button = view.findViewById<Button>(R.id.ADD)
 
-
          addButton.setOnClickListener {
-             noteList.add(Note(titleText.toString(), contentText.toString()) )
+             noteList.add(Note(titleText.toString(), contentText.toString()))
              val postContentText = view.findViewById<EditText>(R.id.note_text).setText("")
              val postTitleText = view.findViewById<EditText>(R.id.title_text).setText("")
-             adapter.notifyItemInserted(noteList.size)
+             adapter.notifyItemInserted(noteList.size-1)
              hideKeyboard()
-
-             adapter.notifyDataSetChanged()
 
          }
 
