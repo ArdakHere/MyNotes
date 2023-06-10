@@ -1,12 +1,18 @@
 package com.example.mynotes
 
+import android.graphics.Color
+import android.media.Image
 import android.os.Parcel
 import android.os.Parcelable
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.recyclerview.widget.RecyclerView
 
 class NoteAdapter(private var notes : MutableList<Note>) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
@@ -42,11 +48,14 @@ class NoteAdapter(private var notes : MutableList<Note>) : RecyclerView.Adapter<
                 }
                 true
             }
+
+
         }
 
         fun bind(note: Note) {
             titleTextView.text = note.title
             contentTextView.text = note.content
+
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -56,13 +65,21 @@ class NoteAdapter(private var notes : MutableList<Note>) : RecyclerView.Adapter<
 
     // Bind data to ViewHolder
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         holder.itemView.apply {
+            val EditButton = findViewById<ImageButton>(R.id.edit_button)
+            EditButton.bringToFront()
+
             val titleText = findViewById<TextView>(R.id.titleTextView)
             val contentText = findViewById<TextView>(R.id.contentTextView)
             titleText.text = notes[position].title
             contentText.text = notes[position].content
+            contentText.setBackgroundColor(notes[position].color)
         }
+
     }
+
+
 
     // Return the number of notes
     override fun getItemCount(): Int {

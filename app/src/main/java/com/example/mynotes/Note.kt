@@ -4,5 +4,8 @@ import android.text.Editable
 
 data class Note(
     var title: String?,
-    var content: String?
+    var content: String?,
+    var color: Int
+
 )
+

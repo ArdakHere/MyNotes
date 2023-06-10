@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="400dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -18,11 +18,20 @@
         tools:layout_editor_absoluteX="143dp"
         tools:layout_editor_absoluteY="31dp" />
 
+    <ImageButton
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/edit_pencil"
+        app:layout_constraintTop_toTopOf="@id/contentTextView"
+        android:id="@+id/edit_button"
+        app:layout_constraintEnd_toEndOf="@id/contentTextView"
+
+        />
     <TextView
         android:id="@+id/contentTextView"
         android:outlineAmbientShadowColor="@color/black"
         android:layout_width="350dp"
-        android:layout_height="350dp"
+        android:layout_height="250dp"
         android:background="#FFFFCC"
         app:layout_constraintStart_toStartOf="@id/titleTextView"
         app:layout_constraintEnd_toEndOf="@id/titleTextView"
