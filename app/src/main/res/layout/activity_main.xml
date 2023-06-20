@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="@id/rvNotes"
         android:id="@+id/MyNotestext"
         android:textSize="30sp"
-
+        android:textStyle="bold"
         android:text="@string/my_notes"
         />
 
@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@id/settings_button"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="50dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="175dp"
         android:layout_marginStart="50dp"
         android:layout_marginBottom="200dp"
         android:layout_width="380dp"
@@ -77,11 +77,13 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         app:layout_constraintEnd_toEndOf="parent"
+
+
         android:layout_marginEnd="25dp"
         android:id="@+id/add_note_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="65dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:backgroundTint="#D4B4B4"
         android:clickable="true"

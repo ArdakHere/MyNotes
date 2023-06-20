@@ -5,5 +5,8 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Mynotes" parent="Base.Theme.Mynotes" />
+    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+        <item name="color">#5A4040</item>
+        <item name="colorPrimaryDark">#4A4A4A</item>
+    </style>
 </resources>

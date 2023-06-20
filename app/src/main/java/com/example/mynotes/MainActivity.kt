@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -33,7 +34,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
         val adapter = NoteAdapter(noteList)
         val myRecyclerView = findViewById<RecyclerView>(R.id.rvNotes)
 
@@ -45,39 +45,19 @@ class MainActivity : AppCompatActivity() {
         addNoteButton.setOnClickListener {
             supportFragmentManager.beginTransaction().apply {
                 addFragment.setSharedDataList(noteList, adapter)
-                replace(R.id.add_fragment, addFragment)
+                replace(R.id.fragment_container, addFragment)
                 addToBackStack(null)
                 addNoteButton.visibility = View.GONE
                 commit()
 
             }
         }
-
-
-
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
         findViewById<FloatingActionButton>(R.id.add_note_button).visibility = View.VISIBLE
 
-    }
-    private fun openNoteFragment() {
-        // Create an instance of the NoteFragment
-        val noteFragment = fragment_add()
-
-        // Get the FragmentManager and start a FragmentTransaction
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-
-        // Replace the content of the container with the NoteFragment
-        fragmentTransaction.replace(R.id.add_fragment, noteFragment)
-
-        // Add the transaction to the back stack (optional)
-        fragmentTransaction.addToBackStack(null)
-
-        // Commit the transaction
-        fragmentTransaction.commit()
     }
 
 }

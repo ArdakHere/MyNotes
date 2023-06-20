@@ -73,6 +73,7 @@ class fragment_add : Fragment(R.layout.fragment_add) {
 
     }
 
+
     private fun hideKeyboard() {
         val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow((view?.findViewById<EditText>(R.id.note_text))?.windowToken, 0)

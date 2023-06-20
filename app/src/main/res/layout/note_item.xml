@@ -14,9 +14,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title"
-        android:textSize="37sp"
-        tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="31dp" />
+        android:textSize="34sp"
+        android:layout_marginTop="15dp"
+    />
 
     <ImageButton
         android:layout_width="35dp"
@@ -24,6 +24,7 @@
         android:background="@drawable/edit_pencil"
         app:layout_constraintTop_toTopOf="@id/contentTextView"
         android:id="@+id/edit_button"
+
         app:layout_constraintEnd_toEndOf="@id/contentTextView"
 
         />
@@ -33,6 +34,10 @@
         android:layout_width="350dp"
         android:layout_height="250dp"
         android:background="#FFFFCC"
+        android:paddingStart = "17sp"
+        android:paddingEnd="17sp"
+        android:paddingTop="17sp"
+        android:paddingBottom="17sp"
         app:layout_constraintStart_toStartOf="@id/titleTextView"
         app:layout_constraintEnd_toEndOf="@id/titleTextView"
         app:layout_constraintTop_toTopOf="parent"

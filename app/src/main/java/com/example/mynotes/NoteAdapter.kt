@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.media.Image
 import android.os.Parcel
 import android.os.Parcelable
+import android.text.TextUtils.replace
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -12,19 +13,21 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuView
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.recyclerview.widget.RecyclerView
 
-class NoteAdapter(private var notes : MutableList<Note>) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
+
+class NoteAdapter(private val notes: MutableList<Note>) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         private val contentTextView: TextView = itemView.findViewById(R.id.contentTextView)
+        private val editButton = itemView.findViewById<ImageButton>(R.id.edit_button)
+
         init {
-            itemView.setOnClickListener {
-                val note = notes[absoluteAdapterPosition]
-                // Handle note click event
-                // Open a window or perform any desired action
-            }
             itemView.setOnLongClickListener {
                 val position = absoluteAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
@@ -38,7 +41,7 @@ class NoteAdapter(private var notes : MutableList<Note>) : RecyclerView.Adapter<
                     builder.setPositiveButton("Delete") { dialog, which ->
                         // Delete the task from your task list
                         notes.removeAt(position)
-                        notifyItemChanged(position)
+                        notifyItemRemoved(position)
                     }
 
                     builder.setNegativeButton("Cancel", null)
@@ -49,15 +52,31 @@ class NoteAdapter(private var notes : MutableList<Note>) : RecyclerView.Adapter<
                 true
             }
 
+            editButton.setOnClickListener {
+                val position = absoluteAdapterPosition
+                val item = notes[position]
 
+                val fragment = fragment_edit.newInstance(item.title, item.content)
+
+                fragment.setSharedData(notes, this@NoteAdapter, position)
+
+                if (position != RecyclerView.NO_POSITION) {
+
+                    val fragmentManager = (itemView.context as AppCompatActivity).supportFragmentManager
+                    val fragmentTransaction = fragmentManager.beginTransaction()
+                    fragmentTransaction.replace(R.id.fragment_container, fragment)
+                    fragmentTransaction.addToBackStack(null)
+                    fragmentTransaction.commit()
+                }
+            }
         }
 
         fun bind(note: Note) {
             titleTextView.text = note.title
             contentTextView.text = note.content
-
         }
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.note_item, parent, false)
         return ViewHolder(view)
@@ -65,7 +84,6 @@ class NoteAdapter(private var notes : MutableList<Note>) : RecyclerView.Adapter<
 
     // Bind data to ViewHolder
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
         holder.itemView.apply {
             val EditButton = findViewById<ImageButton>(R.id.edit_button)
             EditButton.bringToFront()
@@ -76,16 +94,12 @@ class NoteAdapter(private var notes : MutableList<Note>) : RecyclerView.Adapter<
             contentText.text = notes[position].content
             contentText.setBackgroundColor(notes[position].color)
         }
-
     }
 
-
-
-    // Return the number of notes
     override fun getItemCount(): Int {
         return notes.size
     }
-
-
-
 }
+
+
+
